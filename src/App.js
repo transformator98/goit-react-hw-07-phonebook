@@ -1,25 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import { createStore, applyMiddleware } from 'redux';
 
-export default App;
+const reducer = state => state;
+
+const loggerMiddleware = store => next => action => {
+  console.group(action.type);
+  console.info('dispatching', action);
+  console.groupEnd(action.type);
+
+  return next(action);
+};
+
+const enhancer = applyMiddleware(loggerMiddleware);
+
+const store = createStore(reducer, enhancer);
