@@ -1,18 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
 
-import { createStore, applyMiddleware } from 'redux';
+import ContactsForm from './component/ContactForm';
+import Filter from './component/Filter';
+import ContactList from './component/ContactList';
+import Container from './component/Container';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const reducer = state => state;
+export default function App() {
+  return (
+    <div className="wrapper">
+      <Container>
+        <h1>Phonebook</h1>
+        <ContactsForm />
+        <h2>Contact</h2>
+        <Filter />
 
-const loggerMiddleware = store => next => action => {
-  console.group(action.type);
-  console.info('dispatching', action);
-  console.groupEnd(action.type);
-
-  return next(action);
-};
-
-const enhancer = applyMiddleware(loggerMiddleware);
-
-const store = createStore(reducer, enhancer);
+        <ContactList />
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+      </Container>
+    </div>
+  );
+}
