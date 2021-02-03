@@ -7,6 +7,7 @@ import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './App.css';
 
 export default function App() {
   const loading = useSelector(state => state.contacts.loading);
@@ -19,9 +20,9 @@ export default function App() {
         <Filter />
         {loading && (
           <Loader
-            type="Plane"
-            color="#808080"
-            secondaryColor="#000"
+            className="loader"
+            type="Audio"
+            color="#464646"
             height={40}
             width={40}
             timeout={3000} //3 secs
