@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 
-import * as phonebookAction from '../../redux/phonebook/phonebook-actions';
+import * as phonebookOperation from '../../redux/phonebook/phonebook-operation';
 import { getItems } from '../../redux/phonebook/phonebook-selectors';
 
 import s from './ContactsForm.module.css';
@@ -33,7 +33,8 @@ export default function ContactsForm() {
     const repeatName = name.toLowerCase();
     return items.find(contact => contact.name === repeatName);
   };
-  const addContact = () => dispatch(phonebookAction.addContact(name, number));
+  const addContact = () =>
+    dispatch(phonebookOperation.addContact(name, number));
 
   const handleSubmit = event => {
     event.preventDefault();

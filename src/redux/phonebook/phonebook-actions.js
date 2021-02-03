@@ -1,26 +1,27 @@
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 import { createAction } from '@reduxjs/toolkit';
 
 //pending
-export const fetchPhonebookRequest = createAction(
+export const fetchContactRequest = createAction(
   'phonebook/fetchPhonebookRequest',
 );
 //fulfilled
-export const fetchPhonebookSuccess = createAction(
+export const fetchContactSuccess = createAction(
   'phonebook/fetchPhonebookSuccess',
 );
 //rejected
-export const fetchPhonebookError = createAction(
-  'phonebook/fetchPhonebookError',
+export const fetchContactError = createAction('phonebook/fetchPhonebookError');
+
+export const addContactRequest = createAction('contact/addContactRequest');
+export const addContactSuccess = createAction('contact/addContactSuccess');
+export const addContactError = createAction('contact/addContactError');
+
+export const deleteContactRequest = createAction(
+  'contact/deleteContactRequest',
 );
+export const deleteContactSuccess = createAction(
+  'contact/deleteContactSuccess',
+);
+export const deleteContactError = createAction('contact/deleteContactError');
 
-export const addContact = createAction('phonebook/Add', (name, number) => ({
-  payload: {
-    id: uuidv4(),
-    name,
-    number,
-  },
-}));
-
-export const deleteContact = createAction('phonebook/Delete');
 export const changeFilter = createAction('phonebook/ChangeFilter');
