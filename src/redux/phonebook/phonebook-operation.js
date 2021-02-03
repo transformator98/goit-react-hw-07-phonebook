@@ -1,4 +1,7 @@
 import {
+  fetchContactRequest,
+  fetchContactSuccess,
+  fetchContactError,
   addContactRequest,
   addContactSuccess,
   addContactError,
@@ -8,6 +11,15 @@ import {
 } from './phonebook-actions';
 import * as phonebookShelfAPI from '../../services/phonebookShelf-api';
 import { toast } from 'react-toastify';
+
+export const fetchContact = () => dispatch => {
+  dispatch(fetchContactRequest());
+
+  phonebookShelfAPI
+    .fetchContact()
+    .then(({ data }) => dispatch(fetchContactSuccess(data)))
+    .catch(error => dispatch(fetchContactError(error)));
+};
 
 export const addContact = (name, number) => dispatch => {
   const contact = { name, number };
