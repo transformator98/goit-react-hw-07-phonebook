@@ -12,13 +12,15 @@ import {
 import * as phonebookShelfAPI from '../../services/phonebookShelf-api';
 import { toast } from 'react-toastify';
 
-export const fetchContact = () => dispatch => {
+export const fetchContact = () => async dispatch => {
   dispatch(fetchContactRequest());
 
-  phonebookShelfAPI
-    .fetchContact()
-    .then(({ data }) => dispatch(fetchContactSuccess(data)))
-    .catch(error => dispatch(fetchContactError(error)));
+  try {
+    const data = await phonebookShelfAPI.fetchContact();
+    dispatch(fetchContactSuccess(data));
+  } catch (error) {
+    dispatch(fetchContactError(error));
+  }
 };
 
 export const addContact = (name, number) => dispatch => {

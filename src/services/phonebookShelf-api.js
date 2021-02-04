@@ -3,7 +3,8 @@ import axios from 'axios';
 axios.defaults.baseURL = 'http://localhost:4040';
 
 export async function fetchContact() {
-  return await axios.get('/contacts');
+  const { data } = await axios.get('/contacts');
+  return data;
 }
 
 export async function addContact(contact) {

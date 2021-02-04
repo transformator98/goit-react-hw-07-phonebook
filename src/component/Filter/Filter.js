@@ -1,7 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux';
 import s from './Filter.module.css';
-import * as phonebookAction from '../../redux/phonebook/phonebook-actions';
-import { getFilter } from '../../redux/phonebook/phonebook-selectors';
+import * as phonebookAction from 'redux/phonebook/phonebook-actions';
+import { getFilter } from 'redux/phonebook/phonebook-selectors';
+// import { getFilter } from '../../redux/phonebook/phonebook-selectors';
 
 export default function Filter() {
   const value = useSelector(getFilter);
