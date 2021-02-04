@@ -2,16 +2,20 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import s from './ContactList.module.css';
 import ContactListItem from './ContactListItem';
-import * as phonebookOperation from '../../redux/phonebook/phonebook-operation';
-import { getVisibleContact } from '../../redux/phonebook/phonebook-selectors';
+
+import {
+  getVisibleContact,
+  deleteContact,
+  fetchContact,
+} from 'redux/phonebook';
 
 export default function ContactList() {
   const contacts = useSelector(getVisibleContact);
   const dispatch = useDispatch();
-  const onDeleteContact = id => dispatch(phonebookOperation.deleteContact(id));
+  const onDeleteContact = id => dispatch(deleteContact(id));
 
   useEffect(() => {
-    dispatch(phonebookOperation.fetchContact());
+    dispatch(fetchContact());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

@@ -3,7 +3,7 @@ import ContactsForm from './component/ContactForm';
 import Filter from './component/Filter';
 import ContactList from './component/ContactList';
 import Container from './component/Container';
-import { getLoading, getError } from './redux/phonebook/phonebook-selectors';
+import { getLoading, getError } from 'redux/phonebook';
 
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';

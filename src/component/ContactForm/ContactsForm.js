@@ -2,9 +2,7 @@ import { useState } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-
-import * as phonebookOperation from '../../redux/phonebook/phonebook-operation';
-import { getItems } from '../../redux/phonebook/phonebook-selectors';
+import { getItems, addContact } from 'redux/phonebook';
 
 import s from './ContactsForm.module.css';
 
@@ -33,8 +31,7 @@ export default function ContactsForm() {
     const repeatName = name.toLowerCase();
     return items.find(contact => contact.name === repeatName);
   };
-  const addContact = () =>
-    dispatch(phonebookOperation.addContact(name, number));
+  const formAddContact = () => dispatch(addContact(name, number));
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -53,7 +50,7 @@ export default function ContactsForm() {
       return;
     }
 
-    repeat ? toast.error(`${name} уже существует!`) : addContact();
+    repeat ? toast.error(`${name} уже существует!`) : formAddContact();
 
     reset();
   };
