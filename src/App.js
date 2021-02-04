@@ -3,7 +3,7 @@ import ContactsForm from './component/ContactForm';
 import Filter from './component/Filter';
 import ContactList from './component/ContactList';
 import Container from './component/Container';
-import { getLoading, getError } from 'redux/phonebook';
+import { getLoading, getError, getItems } from 'redux/phonebook';
 
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
@@ -14,6 +14,8 @@ import './App.css';
 export default function App() {
   const loading = useSelector(getLoading);
   const error = useSelector(getError);
+  const filter = useSelector(getItems);
+
   return (
     <div>
       {error && <h1 className="error">{error.message}</h1>}
@@ -22,7 +24,9 @@ export default function App() {
           <h1>Phonebook</h1>
           <ContactsForm />
           <h2>Contact</h2>
-          <Filter />
+
+          {filter.length > 1 && <Filter />}
+
           {loading && (
             <Loader
               className="loader"
