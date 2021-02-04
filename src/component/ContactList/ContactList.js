@@ -20,16 +20,20 @@ export default function ContactList() {
   }, []);
 
   return (
-    <ul className={s.list}>
-      {contacts.map(({ id, name, number }) => (
-        <ContactListItem
-          id={id}
-          key={id}
-          name={name}
-          number={number}
-          onDeleteContact={onDeleteContact}
-        />
-      ))}
-    </ul>
+    <section>
+      <h2>Contact</h2>
+
+      <ul className={s.list}>
+        {contacts.map(({ id, name, number }) => (
+          <ContactListItem
+            id={id}
+            key={id}
+            name={name}
+            number={number}
+            onDeleteContact={onDeleteContact}
+          />
+        ))}
+      </ul>
+    </section>
   );
 }

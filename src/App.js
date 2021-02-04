@@ -14,7 +14,7 @@ import './App.css';
 export default function App() {
   const loading = useSelector(getLoading);
   const error = useSelector(getError);
-  const filter = useSelector(getItems);
+  const visibleFilter = useSelector(getItems);
 
   return (
     <div>
@@ -23,9 +23,9 @@ export default function App() {
         <Container>
           <h1>Phonebook</h1>
           <ContactsForm />
-          <h2>Contact</h2>
+          {/* <h2>Contact</h2> */}
 
-          {filter.length > 1 && <Filter />}
+          {visibleFilter.length > 1 && <Filter />}
 
           {loading && (
             <Loader
